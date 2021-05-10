@@ -42,12 +42,14 @@ function reduceToAllTrue(array){
     }
     return array.reduce(reducer, true)
 }
-function reduceToAnyTrue(sourceArray){
-  for (let i=0;i<sourceArray.length;i++){
-    if (sourceArray[i] === false) return false;
-  }
-  for (let i=0;i<sourceArray.length;i++){
-    if (sourceArray[i] === true) return true;
-    else return false;
-  }
+function reduceToAnyTrue(array){
+
+    const reducer = function(accumulator, currentValue){
+        if(!!accumulator == true){
+            return true;
+        } else {
+            return !!currentValue;
+        }
+    }
+    return array.reduce(reducer, false)
 }
