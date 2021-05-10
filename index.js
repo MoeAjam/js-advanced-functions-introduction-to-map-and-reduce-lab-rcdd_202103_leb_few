@@ -31,11 +31,16 @@ function reduceToTotal(sourceArray, startingPoint=0){
   }
   return sum;
 }
-function reduceToAllTrue(sourceArray){
-  for (let i=0;i<sourceArray.length;i++){
-    if(sourceArray === false) return false;
-    else return true;
-  }
+function reduceToAllTrue(array){
+
+    const reducer = function(accumulator, currentValue){
+        if(!!accumulator == true && !!currentValue == true){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return array.reduce(reducer, true)
 }
 function reduceToAnyTrue(sourceArray){
   for (let i=0;i<sourceArray.length;i++){
